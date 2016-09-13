@@ -35,8 +35,9 @@ def find_longest_orfs(seq,n_orfs):
 
     # Select n longest orfs to return:
     number = -(n_orfs+1)
-    longest_orfs = orfs[:number:-1] # make more efficient
+    longest_orfs = orfs[:number:-1]
 
+    longest_orfs = tuple(longest_orfs)
     return longest_orfs
 
 def read_fasta(fasta_file):
@@ -46,7 +47,7 @@ def read_fasta(fasta_file):
 
     seq_dict = dict() # Declare a new dictionary
 
-    with open(fasta_file,'r') as f: # or 'rU'?
+    with open(fasta_file,'r') as f:
         lines = f.readlines()
         defline = ""
         for li in lines:
@@ -79,10 +80,8 @@ for defline in seq_dict.keys():
         (orf_len,orf_seq,aa_seq) = orf
         defline_new = defline + " LENGTH=" + str(orf_len)
         if seq_type == 'aa':
-            #continue
             print(defline_new + "\n" + aa_seq)
         elif seq_type == 'nt':
-            #continue
             print(defline_new + "\n" + orf_seq)
         else:
             raise RuntimeError(seq_type + "is not a permitted sequence type.")

@@ -10,7 +10,8 @@ def gc_blocks(seq, block_size):
 	for block in blocks:
 		gc = compute_gc_content(block)
 		gc_blocks_list.append((block,gc))
-	return gc_blocks_list
+	gc_blocks_tuple = tuple(gc_blocks_list)
+	return gc_blocks_tuple
 
 
 def compute_gc_content(block):
@@ -26,15 +27,15 @@ def partition_blocks(seq, block_size):
 	i = 0
 	while i+block_size <= len(seq):
 		blocks.append(seq[i:i+block_size])
-		i+=block_size
+		i += block_size
 	return blocks
 
 
 def gc_map(seq, block_size, gc_thresh):
 	"""Annotates input sequences by GC content with capitalization"""
-	gc_blocks_list = gc_blocks(seq, block_size)
+	gc_blocks_tuple = gc_blocks(seq, block_size)
 	output_seq = ""
-	for block in gc_blocks_list:
+	for block in gc_blocks_tuple:
 		(seq,gc) = block
 		if gc < gc_thresh:
 			output_seq += seq.lower()
@@ -48,7 +49,7 @@ def read_fasta(fasta_file):
 
 	seq_dict = dict() # Declare a new dictionary
 
-	with open(fasta_file,'r') as f: # or 'rU'?
+	with open(fasta_file,'r') as f:
 		lines = f.readlines()
 		defline = ""
 		for li in lines:
