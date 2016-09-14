@@ -12,7 +12,7 @@ sns.set(rc=rc)
 data = np.loadtxt('data/collins_switch.csv', skiprows=2, delimiter=',')
 
 iptg = data[:,0]
-gfp = data[:,1]
+gfp = data[:,1] # foldchange
 sem = data[:,2]
 
 x_min = min(iptg)
@@ -25,7 +25,7 @@ plt.close()
 plt.errorbar(iptg, gfp, yerr=sem, marker='.',
             markersize=20)
 plt.xlabel('IPTG (mM)')
-plt.ylabel('Normalized GFP')
+plt.ylabel('GFP Fluorescence')
 plt.margins(0.05)
 plt.xlim(x_min-1, x_max+1)
 plt.show()

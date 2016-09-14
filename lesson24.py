@@ -44,7 +44,7 @@ plt.legend(('low food', 'high food'), loc='lower right')
 plt.xlabel('Cross-sectional area (µm)')
 plt.ylabel('eCDF')
 
-#plt.savefig('lesson24_egg_area_eCDF.svg', bbox_inches='tight')
+plt.savefig('lesson24_egg_area_eCDF.svg', bbox_inches='tight')
 
 plt.show()
 # plt.margins(0.05)
