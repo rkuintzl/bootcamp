@@ -32,16 +32,18 @@ def retrieve_impact_force(frog_id,col_header):
 
 frogs = ('I','II','III','IV')
 
-for frog in frogs:
+array_impf_mean = np.empty(4) # CCan I do this?
+for i, frog in enumerate(frogs):
     col_header = 'impact force (mN)'
     df_impf = retrieve_impact_force(frog,col_header)
     impf_mean = retrieve_impact_force(frog,col_header).mean()
-    print(impf_mean)
-    #print("The mean impact force of frog",frog,"is",impf_mean,"mN")
+    array_impf_mean[i] = impf_mean[0]
+
+print(array_impf_mean)
 
 # Try grouby
 
-def coeff_of_var(data):
+#def coeff_of_var(data):
 
 
 # We only want ID's and impact forces, so slice those out

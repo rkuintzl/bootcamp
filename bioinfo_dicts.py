@@ -40,8 +40,8 @@ amino_acids = 'FFLLSSSSYY**CC*WLLLLPPPPHHQQRRRRIIIMTTTTNNKKSSRRVVVVAAAADDEEGGGG'
 codons = dict(zip(codon_list, amino_acids))
 
 del codon_list
-del amino_acids
-del bases
+# del amino_acids
+# del bases
 del first_base
 del second_base
 del third_base
